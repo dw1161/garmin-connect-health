@@ -1,5 +1,11 @@
 # garmin-connect-health — OpenClaw Skill 🏃‍♂️
 
+<div align="right">
+  <a href="README.zh.md"><img src="https://img.shields.io/badge/语言-中文-red?style=for-the-badge&logo=googletranslate&logoColor=white" alt="中文"></a>
+  &nbsp;
+  <img src="https://img.shields.io/badge/Language-English-blue?style=for-the-badge&logo=googletranslate&logoColor=white" alt="English">
+</div>
+
 A comprehensive Garmin Connect skill for [OpenClaw](https://github.com/openclaw/openclaw) that fetches your complete health & fitness data and makes it queryable by your AI agent.
 
 ## Features

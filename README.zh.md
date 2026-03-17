@@ -1,8 +1,12 @@
 # garmin-connect-health — OpenClaw Skill 🏃‍♂️
 
-一个面向 [OpenClaw](https://github.com/openclaw/openclaw) 的 Garmin Connect 全量健康数据 Skill，可获取 40+ 项健康指标并让 AI 助手直接查询。
+<div align="right">
+  <img src="https://img.shields.io/badge/语言-中文-red?style=for-the-badge&logo=googletranslate&logoColor=white" alt="中文">
+  &nbsp;
+  <a href="README.md"><img src="https://img.shields.io/badge/Language-English-blue?style=for-the-badge&logo=googletranslate&logoColor=white" alt="English"></a>
+</div>
 
-[English](README.md) | 中文
+一个面向 [OpenClaw](https://github.com/openclaw/openclaw) 的 Garmin Connect 全量健康数据 Skill，可获取 40+ 项健康指标并让 AI 助手直接查询。
 
 ## 功能亮点
 
