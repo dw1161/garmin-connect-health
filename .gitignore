@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+*.egg-info/
+dist/
+build/
+
+# Credentials
+*.key
+*.pem
+.garminconnect/
+.garmin_credentials
+
+# Data (user-specific)
+data/
