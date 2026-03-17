@@ -57,9 +57,14 @@ def _load_credentials(email_arg=None, password_arg=None):
             pass  # Not macOS
 
     if not password:
-        # Credentials file
+        # Credentials file (~/.garmin_credentials should be chmod 600)
         cred_file = os.path.expanduser("~/.garmin_credentials")
         if os.path.exists(cred_file):
+            # Warn if file permissions are too open
+            import stat
+            mode = os.stat(cred_file).st_mode
+            if mode & (stat.S_IRWXG | stat.S_IRWXO):
+                print(f"⚠️  Warning: {cred_file} is readable by others. Run: chmod 600 {cred_file}")
             for line in open(cred_file):
                 k, _, v = line.strip().partition("=")
                 if k == "email":    email    = v
@@ -400,9 +405,14 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Fetch full Garmin Connect health data")
     parser.add_argument("--date",     help="Date YYYY-MM-DD (default: today)")
     parser.add_argument("--email",    help="Garmin account email")
-    parser.add_argument("--password", help="Garmin account password")
+    parser.add_argument("--password", help="Garmin account password (use env var GARMIN_PASSWORD instead to avoid shell history exposure)")
     parser.add_argument("--show",     action="store_true", help="Show latest cached data")
     args = parser.parse_args()
+
+    # Security: warn if password passed via CLI (visible in process list / shell history)
+    if args.password:
+        print("⚠️  Note: Passing --password via CLI may expose it in shell history.")
+        print("   Prefer: export GARMIN_PASSWORD='yourpass'  or use macOS Keychain.\n")
 
     if args.show:
         show_latest()
