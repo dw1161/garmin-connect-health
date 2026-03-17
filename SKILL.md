@@ -1,3 +1,19 @@
+---
+name: garmin-connect-health
+description: |
+  Fetch comprehensive health & fitness data from Garmin Connect for your AI agent.
+  40+ metrics: sleep, HRV, stress, body battery, SpO2, VO2 Max, training status, race predictions, activities, and more.
+
+  Use this skill when:
+  (1) User asks about steps, distance, calories, floors
+  (2) User asks about sleep quality, sleep score, deep/REM sleep
+  (3) User asks about HRV, heart rate, resting heart rate
+  (4) User asks about body battery, stress, SpO2, respiration
+  (5) User asks about training status, training load, overtraining
+  (6) User asks about VO2 max, fitness age, race predictions
+  (7) User mentions "Garmin", "health data", "workout", "fitness"
+---
+
 # Garmin Connect Health Data Skill
 
 Fetch comprehensive health & fitness data from Garmin Connect for your AI agent.
