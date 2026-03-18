@@ -16,6 +16,19 @@ A comprehensive Garmin Connect skill for [OpenClaw](https://github.com/openclaw/
 - **Auto-caches daily data** — fast queries without repeated API calls
 - **Cross-platform** — macOS, Linux, Windows
 
+## Screenshots
+
+> AI-powered health analysis powered by this skill — real data, real insights 💪
+
+<div align="center">
+  <img src="docs/screenshot-1.jpg" width="380" alt="Garmin health data overview — steps, sleep, HRV, body battery, SpO2">
+  &nbsp;&nbsp;
+  <img src="docs/screenshot-2.jpg" width="380" alt="Detailed training analysis and recovery recommendations">
+</div>
+
+*Left: Full health snapshot including sleep, heart rate, body battery, blood oxygen, and HRV.*
+*Right: Training review with aerobic/anaerobic effect breakdown and personalized recovery advice.*
+
 ## Quick Start
 
 ```bash

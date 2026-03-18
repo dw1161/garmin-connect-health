@@ -16,6 +16,19 @@
 - **自动缓存每日数据** — 无需重复调用 API，秒级响应
 - **跨平台** — macOS、Linux、Windows 均支持
 
+## 效果截图
+
+> 接入 OpenClaw 后，AI 助手可直接分析你的 Garmin 健康数据 💪
+
+<div align="center">
+  <img src="docs/screenshot-1.jpg" width="380" alt="Garmin 健康数据总览 — 步数、睡眠、HRV、Body Battery、血氧">
+  &nbsp;&nbsp;
+  <img src="docs/screenshot-2.jpg" width="380" alt="训练分析与恢复建议">
+</div>
+
+*左图：完整健康数据快照，包含睡眠、心率、Body Battery、血氧、HRV 等核心指标。*
+*右图：今日训练回顾（有氧/无氧效果量化）+ 个性化恢复建议。*
+
 ## 快速开始
 
 ```bash
