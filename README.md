@@ -105,6 +105,40 @@ Your first login may trigger MFA. You'll be prompted to enter the verification c
 
 See full schema in [SKILL.md](SKILL.md).
 
+## Region: Global vs China (CN)
+
+By default the skill connects to the **global** Garmin Connect (`connect.garmin.com`).  
+If your Garmin account was registered in China, or you are running from a mainland China IP, switch to the **CN endpoint** (`connect.garmin.com.cn`) for better reliability:
+
+### One-time setup (recommended)
+
+Add to your shell profile (`~/.zshrc`, `~/.bashrc`, etc.) so it applies to every run:
+
+```bash
+export GARMIN_IS_CN=true
+```
+
+Then reload your shell:
+
+```bash
+source ~/.zshrc   # or ~/.bashrc
+```
+
+That's it — you never need to pass a flag again.
+
+### Per-run flag (ad-hoc)
+
+```bash
+python3 garmin_health.py --cn
+```
+
+### For OpenClaw skill users
+
+The skill reads `GARMIN_IS_CN` automatically. Set it once in your shell profile (above) and all future skill invocations — including those triggered by your AI agent — will use the CN endpoint without any extra configuration.
+
+> **Not sure which endpoint to use?**  
+> If you registered your Garmin account on the Chinese Garmin website or app, use CN. If you registered on garmin.com (international), use the default (no flag needed).
+
 ## Credential Priority
 
 1. `--email` / `--password` CLI arguments

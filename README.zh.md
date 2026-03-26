@@ -85,6 +85,36 @@ EOF
 chmod 600 ~/.garmin_credentials
 ```
 
+## 国内账号 / 大陆 IP 用户
+
+默认连接 **国际版** Garmin Connect（`connect.garmin.com`）。  
+如果你的佳明账号是在国内注册的，或在大陆 IP 运行，建议切换到 **国内端点**（`connect.garmin.com.cn`），稳定性更好、不容易触发 429。
+
+### 一次性配置（推荐）
+
+在 shell 配置文件（`~/.zshrc` 或 `~/.bashrc`）里加一行，以后每次都自动生效：
+
+```bash
+export GARMIN_IS_CN=true
+```
+
+然后重新加载：
+
+```bash
+source ~/.zshrc   # 或 source ~/.bashrc
+```
+
+**设置一次，永久生效** — 包括 AI 助手通过 Skill 调用时，也会自动使用国内端点，无需额外传参。
+
+### 临时指定（单次运行）
+
+```bash
+python3 garmin_health.py --cn
+```
+
+> **怎么判断用哪个端点？**  
+> 如果你是在国内佳明官网/App 注册的账号，选国内（`--cn`）。如果是在 garmin.com 国际官网注册的，用默认即可。
+
 ### 首次登录与双重验证（MFA）
 首次运行时 Garmin 会触发 MFA 验证，你的账号注册邮箱会收到验证码，按提示输入即可。授权成功后 token 会缓存在 `~/.garminconnect/`，后续无需再次验证。
 
