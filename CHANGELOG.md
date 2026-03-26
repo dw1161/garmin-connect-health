@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.2 — 2026-03-26
+
+### Added
+- `--cn` CLI flag and `GARMIN_IS_CN=true` env var to switch to Garmin Connect CN (`connect.garmin.com.cn`). Recommended for Chinese Garmin accounts or when running from a mainland China IP. Default remains global.
+
 ## v1.0.1 — 2026-03-26
 
 ### Fixed
