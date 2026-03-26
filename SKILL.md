@@ -70,10 +70,20 @@ echo -e "email=you@example.com\npassword=yourpassword" > ~/.garmin_credentials
 chmod 600 ~/.garmin_credentials
 ```
 
-### 3. First run
+### 3. Set region (China accounts only)
+
+If your Garmin account was registered in China, add this to your shell profile (`~/.zshrc` / `~/.bashrc`) **once**:
+
+```bash
+export GARMIN_IS_CN=true
+```
+
+This tells the skill to use `connect.garmin.com.cn` instead of the global endpoint — more reliable for mainland China IPs and prevents 429 rate-limit errors. Skip this step if you have a global Garmin account.
+
+### 4. First run
 First login may require MFA verification. You'll be prompted to enter a code sent to your email.
 
-### 4. Use with OpenClaw
+### 5. Use with OpenClaw
 Ask your AI agent:
 - "Show my health data"
 - "How did I sleep last night?"
@@ -92,6 +102,9 @@ python3 garmin_health.py --date 2026-03-16
 # Show latest cached data
 python3 garmin_health.py --show
 
+# Use Garmin Connect CN endpoint (Chinese accounts / mainland China IP)
+python3 garmin_health.py --cn
+
 # With credentials
 python3 garmin_health.py --email you@example.com --password pass
 ```
@@ -104,7 +117,8 @@ python3 garmin_health.py --email you@example.com --password pass
 
 Override with env vars:
 - `GARMIN_DATA_DIR` — Change data directory
-- `GARMIN_TOKENSTORE` — Change token directory
+- `GARMIN_TOKENSTORE` — Change token cache directory
+- `GARMIN_IS_CN=true` — Use Garmin Connect CN endpoint (set once in shell profile)
 
 ## Supported Languages
 

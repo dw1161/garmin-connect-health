@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.3 — 2026-03-26
+
+### Docs
+- README (EN/ZH) and SKILL.md: added CN endpoint setup section with one-time `GARMIN_IS_CN` env var instructions
+- SKILL.md: added `--cn` usage example and `GARMIN_IS_CN` to env var table
+
 ## v1.0.2 — 2026-03-26
 
 ### Added
