@@ -78,7 +78,7 @@ def _load_credentials(email_arg=None, password_arg=None):
     return email, password
 
 
-def get_client(email=None, password=None):
+def get_client(email=None, password=None, is_cn=None):
     """Return an authenticated Garmin client.
 
     Strategy (mirrors the hardened local version):
@@ -90,10 +90,19 @@ def get_client(email=None, password=None):
          subsequent calls are also cache-hits.
 
     This avoids hammering the SSO endpoint on every run (which triggers 429s).
+
+    Region selection (in order of priority):
+      --cn CLI flag  →  GARMIN_IS_CN=true env var  →  default: False (global)
+    Set is_cn=True to use Garmin Connect CN (connect.garmin.com.cn), recommended
+    for users with a Chinese Garmin account or when running from a mainland IP.
     """
+    # Resolve is_cn: caller arg → env var → default False
+    if is_cn is None:
+        is_cn = os.environ.get("GARMIN_IS_CN", "").lower() in ("1", "true", "yes")
+
     # ── Step 1: attempt token-only auth ──────────────────────────────────────
     try:
-        client = Garmin()
+        client = Garmin(is_cn=is_cn)
         client.garth.load(TOKENSTORE)
         profile = client.garth.profile
         client.display_name = profile.get("displayName") if profile else None
@@ -104,7 +113,7 @@ def get_client(email=None, password=None):
 
     # ── Step 2: fresh login with credentials ─────────────────────────────────
     email, password = _load_credentials(email, password)
-    client = Garmin(email, password)
+    client = Garmin(email, password, is_cn=is_cn)
     try:
         client.login(TOKENSTORE)
     except Exception:
@@ -121,15 +130,16 @@ def safe_get(fn, label, *args, **kwargs):
         return None
 
 
-def fetch_all(target_date=None, email=None, password=None):
+def fetch_all(target_date=None, email=None, password=None, is_cn=None):
     if not target_date:
         target_date = str(date.today())
 
     os.makedirs(DATA_DIR, exist_ok=True)
     cache_file = os.path.join(DATA_DIR, f"{target_date}.json")
 
-    print(f"🔐 Connecting to Garmin Connect...")
-    client = get_client(email, password)
+    region = "CN (connect.garmin.com.cn)" if (is_cn or os.environ.get("GARMIN_IS_CN", "").lower() in ("1", "true", "yes")) else "Global (connect.garmin.com)"
+    print(f"🔐 Connecting to Garmin Connect [{region}]...")
+    client = get_client(email, password, is_cn=is_cn)
     print(f"✅ Connected. Fetching {target_date}...\n")
 
     result = {"date": target_date, "fetched_at": datetime.now().isoformat()}
@@ -431,6 +441,7 @@ if __name__ == "__main__":
     parser.add_argument("--email",    help="Garmin account email")
     parser.add_argument("--password", help="Garmin account password (use env var GARMIN_PASSWORD instead to avoid shell history exposure)")
     parser.add_argument("--show",     action="store_true", help="Show latest cached data")
+    parser.add_argument("--cn",       action="store_true", help="Use Garmin Connect CN (connect.garmin.com.cn) instead of global. Also settable via GARMIN_IS_CN=true env var. Recommended for Chinese Garmin accounts or mainland IP.")
     args = parser.parse_args()
 
     # Security: warn if password passed via CLI (visible in process list / shell history)
@@ -441,4 +452,4 @@ if __name__ == "__main__":
     if args.show:
         show_latest()
     else:
-        fetch_all(args.date, args.email, args.password)
+        fetch_all(args.date, args.email, args.password, is_cn=args.cn or None)
