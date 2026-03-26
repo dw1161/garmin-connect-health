@@ -1,17 +1,15 @@
 ---
 name: garmin-connect-health
 description: |
-  Fetch comprehensive health & fitness data from Garmin Connect for your AI agent.
-  40+ metrics: sleep, HRV, stress, body battery, SpO2, VO2 Max, training status, race predictions, activities, and more.
+  Fetch comprehensive health and fitness data from Garmin Connect for your AI agent.
+  Covers 40+ metrics: sleep, HRV, stress, body battery, SpO2, VO2 Max, training status,
+  race predictions, activities, and more. Data is fetched from the official Garmin Connect
+  API using the user's own credentials and stored locally as JSON.
 
-  Use this skill when:
-  (1) User asks about steps, distance, calories, floors
-  (2) User asks about sleep quality, sleep score, deep/REM sleep
-  (3) User asks about HRV, heart rate, resting heart rate
-  (4) User asks about body battery, stress, SpO2, respiration
-  (5) User asks about training status, training load, overtraining
-  (6) User asks about VO2 max, fitness age, race predictions
-  (7) User mentions "Garmin", "health data", "workout", "fitness"
+  Relevant queries: steps, distance, calories, sleep quality, sleep score, deep sleep,
+  REM sleep, HRV, heart rate, resting heart rate, body battery, stress, SpO2, respiration,
+  training status, training load, overtraining, VO2 max, fitness age, race predictions,
+  Garmin health data, workout summary, fitness tracking.
 ---
 
 # Garmin Connect Health Data Skill
@@ -123,6 +121,14 @@ Override with env vars:
 ## Supported Languages
 
 All labels and output in English. JSON field names are English by design.
+
+## Security & Privacy
+
+- **Your credentials only** -- this skill authenticates with Garmin Connect using your own account credentials. No credentials are shared with or stored by this skill.
+- **Local storage only** -- all fetched health data is saved as JSON files on your own machine. No data is sent to any third party.
+- **Token caching** -- after first login, an OAuth token is cached locally (`~/.garminconnect/`). Subsequent runs reuse this token and do not re-send your password.
+- **Recommended auth** -- use macOS Keychain or environment variables rather than `--password` CLI flag to avoid password exposure in shell history.
+- **Official API only** -- all requests go directly to `connect.garmin.com` (or `connect.garmin.com.cn` for CN accounts). No proxies or intermediaries.
 
 ## Requirements
 
