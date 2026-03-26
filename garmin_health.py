@@ -79,6 +79,30 @@ def _load_credentials(email_arg=None, password_arg=None):
 
 
 def get_client(email=None, password=None):
+    """Return an authenticated Garmin client.
+
+    Strategy (mirrors the hardened local version):
+      1. Try to load a cached garth token from TOKENSTORE — no network call.
+      2. Validate the token by reading the profile; if valid, return immediately
+         without ever touching the Garmin SSO endpoint.
+      3. Only fall back to email/password login when the token is missing or
+         expired.  After a successful fresh login the new token is persisted so
+         subsequent calls are also cache-hits.
+
+    This avoids hammering the SSO endpoint on every run (which triggers 429s).
+    """
+    # ── Step 1: attempt token-only auth ──────────────────────────────────────
+    try:
+        client = Garmin()
+        client.garth.load(TOKENSTORE)
+        profile = client.garth.profile
+        client.display_name = profile.get("displayName") if profile else None
+        if client.display_name:
+            return client  # token valid — no SSO call needed
+    except Exception:
+        pass  # token missing / expired / corrupt → fall through to login
+
+    # ── Step 2: fresh login with credentials ─────────────────────────────────
     email, password = _load_credentials(email, password)
     client = Garmin(email, password)
     try:
