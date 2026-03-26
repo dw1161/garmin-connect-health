@@ -1,4 +1,4 @@
-# garmin-connect-health — OpenClaw Skill 🏃‍♂️
+# garmin-connect-health -- OpenClaw Skill 🏃‍♂️
 
 <div align="right">
   <img src="https://img.shields.io/badge/语言-中文-red?style=for-the-badge&logo=googletranslate&logoColor=white" alt="中文">
@@ -10,18 +10,18 @@
 
 ## 功能亮点
 
-- **40+ 健康指标** — 睡眠、HRV、压力、Body Battery、血氧、VO2 Max、训练状态、比赛预测等
-- **结构化 JSON 输出** — 易于程序化查询和扩展
-- **多种认证方式** — 环境变量、命令行参数、macOS 钥匙串、配置文件四选一
-- **自动缓存每日数据** — 无需重复调用 API，秒级响应
-- **跨平台** — macOS、Linux、Windows 均支持
+- **40+ 健康指标** -- 睡眠、HRV、压力、Body Battery、血氧、VO2 Max、训练状态、比赛预测等
+- **结构化 JSON 输出** -- 易于程序化查询和扩展
+- **多种认证方式** -- 环境变量、命令行参数、macOS 钥匙串、配置文件四选一
+- **自动缓存每日数据** -- 无需重复调用 API，秒级响应
+- **跨平台** -- macOS、Linux、Windows 均支持
 
 ## 效果截图
 
 > 接入 OpenClaw 后，AI 助手可直接分析你的 Garmin 健康数据 💪
 
 <div align="center">
-  <img src="docs/screenshot-1.jpg" width="380" alt="Garmin 健康数据总览 — 步数、睡眠、HRV、Body Battery、血氧">
+  <img src="docs/screenshot-1.jpg" width="380" alt="Garmin 健康数据总览 -- 步数、睡眠、HRV、Body Battery、血氧">
   &nbsp;&nbsp;
   <img src="docs/screenshot-2.jpg" width="380" alt="训练分析与恢复建议">
 </div>
@@ -104,7 +104,7 @@ export GARMIN_IS_CN=true
 source ~/.zshrc   # 或 source ~/.bashrc
 ```
 
-**设置一次，永久生效** — 包括 AI 助手通过 Skill 调用时，也会自动使用国内端点，无需额外传参。
+**设置一次，永久生效** -- 包括 AI 助手通过 Skill 调用时，也会自动使用国内端点，无需额外传参。
 
 ### 临时指定（单次运行）
 
@@ -162,16 +162,16 @@ python3 garmin_health.py --show
 ```
 
 可通过环境变量覆盖路径：
-- `GARMIN_DATA_DIR` — 数据目录
-- `GARMIN_TOKENSTORE` — token 缓存目录
+- `GARMIN_DATA_DIR` -- 数据目录
+- `GARMIN_TOKENSTORE` -- token 缓存目录
 
 ## 隐私与安全说明
 
-- ✅ **数据本地存储** — 所有数据保存在你自己的机器上，不上传任何第三方
-- ✅ **仅与 Garmin 官方 API 通信** — 无额外网络请求
-- ✅ **支持 macOS 钥匙串** — 密码可加密存储，无需明文
-- ⚠️ **避免 --password 参数** — 命令行密码会留在 shell 历史和进程列表中，建议用环境变量或钥匙串
-- ⚠️ **保护配置文件** — 使用 `~/.garmin_credentials` 时务必 `chmod 600`
+- ✅ **数据本地存储** -- 所有数据保存在你自己的机器上，不上传任何第三方
+- ✅ **仅与 Garmin 官方 API 通信** -- 无额外网络请求
+- ✅ **支持 macOS 钥匙串** -- 密码可加密存储，无需明文
+- ⚠️ **避免 --password 参数** -- 命令行密码会留在 shell 历史和进程列表中，建议用环境变量或钥匙串
+- ⚠️ **保护配置文件** -- 使用 `~/.garmin_credentials` 时务必 `chmod 600`
 
 ## 常见问题
 

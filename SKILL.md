@@ -48,23 +48,23 @@ pip install garminconnect
 
 ### 2. Set credentials (choose one method)
 
-**Option A — Environment variables:**
+**Option A -- Environment variables:**
 ```bash
 export GARMIN_EMAIL="you@example.com"
 export GARMIN_PASSWORD="yourpassword"
 ```
 
-**Option B — CLI args:**
+**Option B -- CLI args:**
 ```bash
 python3 garmin_health.py --email you@example.com --password yourpassword
 ```
 
-**Option C — macOS Keychain:**
+**Option C -- macOS Keychain:**
 ```bash
 security add-generic-password -a "you@example.com" -s "garmin_connect" -w "yourpassword"
 ```
 
-**Option D — Credentials file:**
+**Option D -- Credentials file:**
 ```bash
 echo -e "email=you@example.com\npassword=yourpassword" > ~/.garmin_credentials
 chmod 600 ~/.garmin_credentials
@@ -78,7 +78,7 @@ If your Garmin account was registered in China, add this to your shell profile (
 export GARMIN_IS_CN=true
 ```
 
-This tells the skill to use `connect.garmin.com.cn` instead of the global endpoint — more reliable for mainland China IPs and prevents 429 rate-limit errors. Skip this step if you have a global Garmin account.
+This tells the skill to use `connect.garmin.com.cn` instead of the global endpoint -- more reliable for mainland China IPs and prevents 429 rate-limit errors. Skip this step if you have a global Garmin account.
 
 ### 4. First run
 First login may require MFA verification. You'll be prompted to enter a code sent to your email.
@@ -111,14 +111,14 @@ python3 garmin_health.py --email you@example.com --password pass
 
 ## Data Storage
 
-- `~/.garmin_health/YYYY-MM-DD.json` — Daily snapshots
-- `~/.garmin_health/latest.json` — Most recent fetch
-- `~/.garminconnect/` — OAuth token cache
+- `~/.garmin_health/YYYY-MM-DD.json` -- Daily snapshots
+- `~/.garmin_health/latest.json` -- Most recent fetch
+- `~/.garminconnect/` -- OAuth token cache
 
 Override with env vars:
-- `GARMIN_DATA_DIR` — Change data directory
-- `GARMIN_TOKENSTORE` — Change token cache directory
-- `GARMIN_IS_CN=true` — Use Garmin Connect CN endpoint (set once in shell profile)
+- `GARMIN_DATA_DIR` -- Change data directory
+- `GARMIN_TOKENSTORE` -- Change token cache directory
+- `GARMIN_IS_CN=true` -- Use Garmin Connect CN endpoint (set once in shell profile)
 
 ## Supported Languages
 
