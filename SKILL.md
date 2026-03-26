@@ -1,6 +1,6 @@
 ---
 name: garmin-connect-health
-version: 1.0.7
+version: 1.0.8
 description: Fetch health and fitness data from Garmin Connect -- 40+ metrics including sleep, HRV, stress, body battery, SpO2, VO2 Max, training status, and activities. Stores data locally as JSON.
 ---
 

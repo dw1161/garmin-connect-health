@@ -1,6 +1,6 @@
 {
   "name": "garmin-connect-health",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Comprehensive Garmin Connect health data skill -- fetches sleep, HRV, stress, body battery, SpO2, VO2 Max, training status, race predictions and more",
   "author": "dw1161",
   "license": "MIT",
@@ -24,8 +24,8 @@
   "env": [
     {
       "name": "GARMIN_EMAIL",
-      "description": "Your Garmin Connect account email address",
-      "required": true
+      "description": "Your Garmin Connect account email address. Can also be set via macOS Keychain or ~/.garmin_credentials file.",
+      "required": false
     },
     {
       "name": "GARMIN_PASSWORD",
