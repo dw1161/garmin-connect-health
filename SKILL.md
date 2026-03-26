@@ -1,15 +1,7 @@
 ---
 name: garmin-connect-health
-description: |
-  Fetch comprehensive health and fitness data from Garmin Connect for your AI agent.
-  Covers 40+ metrics: sleep, HRV, stress, body battery, SpO2, VO2 Max, training status,
-  race predictions, activities, and more. Data is fetched from the official Garmin Connect
-  API using the user's own credentials and stored locally as JSON.
-
-  Relevant queries: steps, distance, calories, sleep quality, sleep score, deep sleep,
-  REM sleep, HRV, heart rate, resting heart rate, body battery, stress, SpO2, respiration,
-  training status, training load, overtraining, VO2 max, fitness age, race predictions,
-  Garmin health data, workout summary, fitness tracking.
+version: 1.0.6
+description: Fetch health and fitness data from Garmin Connect -- 40+ metrics including sleep, HRV, stress, body battery, SpO2, VO2 Max, training status, and activities. Stores data locally as JSON.
 ---
 
 # Garmin Connect Health Data Skill
