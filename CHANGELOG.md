@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.1 — 2026-03-26
+
+### Fixed
+- `get_client()`: now tries `garth.load()` + profile validation first before falling back to email/password login. This prevents hammering the Garmin SSO endpoint on every run, which was causing 429 Too Many Requests errors for users running the script frequently (e.g. via cron).
+
 ## v1.0.0 — 2026-03-17
 
 ### Added
